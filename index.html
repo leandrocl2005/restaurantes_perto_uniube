@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div id="temperaturaCard" class="row">
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 mb-4">
                 <div class="card">
                     <div class="card-header text-muted">
@@ -110,6 +110,18 @@
                 </div>
             </div>
         </div>
+        <div id="temperaturaCardError" class="row">
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body text-muted text-left">
+                            <p class='mb-2'>Usualmente mostramos a temperatura na região. No entanto, no momento estamos com problemas.</p>
+                            <blockquote class="blockquote mb-2">
+                                <div class="blockquote-footer">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 
     <!-- JQuery -->
@@ -127,7 +139,8 @@
 
     <!-- Google Maps JS-->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&v=3&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&v=3&callback=initMap"
+    onerror="mapErrorHandling()">
     </script>
 
     <!-- Custom JS-->

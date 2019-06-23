@@ -141,12 +141,19 @@ function ViewModel() {
                 '<p class="text-muted">Temperatura de ' + temp + ' C°</p>' +
                 '<p>' + place.description() + '</p>' +
                 '<img src="' + place.pic() + '" width="150px">';
+                $('#temperaturaCardError').html(''); 
+
             },
-            error: function(e) {
-                infoWindow.setContent('<h3>' + place.name() + '</h3>' +
-                '<p class="text-muted">Falha em obter temperatura.</p>' +
+            error: function(parsedjson, textStatus, errorThrown) {
+                console.log("parsedJson: " + JSON.stringify(parsedjson));
+                console.log("textStatus: " + JSON.stringify(textStatus));
+                console.log("errorThrown" + JSON.stringify(errorThrown));
+
+                place.contentString = '<h3>' + place.name() + '</h3>' +
                 '<p>' + place.description() + '</p>' +
-                '<img src="' + place.pic() + '" width="150px">');
+                '<img src="' + place.pic() + '" width="150px">';
+
+                $('#temperaturaCard').html('');        
             }
         });
 
@@ -267,4 +274,10 @@ function ViewModel() {
         }); 
     }
 };
+
+mapErrorHandling = function () {
+    $('.container').html(
+        "<div class='row'><div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-4 text-center'><img src='images/fail.png' width='100%' style='max-width:800px;'></div></div>"
+    )
+}
 
