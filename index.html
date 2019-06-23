@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Simple Map</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+            min-height: 300px;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            padding-top: 10px;
+            margin: auto;
+            background-color: #565681;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filtros
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item" data-bind="click: updateList.bind($data, 'all')">Todos</a>
+                    <a href="#" class="dropdown-item"
+                        data-bind="click: updateList.bind($data, 'restaurante')">Restaurantes</a>
+                    <a href="#" class="dropdown-item" data-bind="click: updateList.bind($data, 'padaria')">Padarias</a>
+                    <a href="#" class="dropdown-item"
+                        data-bind="click: updateList.bind($data, 'lanchonete')">Lanchonetes</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 mb-4">
+                <div class="card">
+                    <h5 class="card-header text-muted">Uberaba</h5>
+                    <div class="card-body card-body-cascade text-center">
+                        <div id="map" class="embed-responsive embed-responsive-16by9">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listas com locais-->
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb-4">
+                <div class="row">
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+                        <div class="card">
+                            <h5 class="card-header text-muted">Onde comer?</h5>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="display: none">Teco Teco</li>
+
+                                    <li class="list-group-item"
+                                        data-bind="visible: showRestaurantes, click:animateById.bind($data,1)"
+                                        style="display: none">Macarrão e Cia</li>
+                                    <li class="list-group-item"
+                                        data-bind="visible: showLanchonetes, click:animateById.bind($data,2)"
+                                        style="display: none">Hard Burguer</li>
+                                    <li class="list-group-item"
+                                        data-bind="visible: showPadarias, click:animateById.bind($data,3)"
+                                        style="display: none">Ikezawa</li>
+                                    <li class="list-group-item"
+                                        data-bind="visible: showRestaurantes, click:animateById.bind($data,4)"
+                                        style="display: none">Italiana Delivery</li>
+                                    <li class="list-group-item"
+                                        data-bind="visible: showLanchonetes, click:animateById.bind($data,5)"
+                                        style="display: none">Mr. Bull Burguer</li>
+
+                                    <li class="list-group-item" style="display: none">Teco Teco</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 mb-4">
+                <div class="card">
+                    <div class="card-header text-muted">
+                        <h4 class="mb-0">Comida gelada ou quente?</h4>
+                    </div>
+                    <div class="card-body text-muted text-left">
+                        <h5 class='mb-2'>Verifique a temperatura na região para a escolha adequada da sua refeição!
+                            Basta clicar em qualquer marcador que saberá a temperatura na região!</h5>
+                        <blockquote class="blockquote mb-2">
+                            <footer class="blockquote-footer">Informações sobre clima por
+                                <cite title="Source Title">HG Brasil</cite>
+                            </footer>
+                            <div class="blockquote-footer">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.4.0.min.js"></script>
+
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Knockout's JS-->
+    <script src="js/knockout-3.2.0.js"></script>
+    <script src="js/knockstrap.min.js"></script>
+
+    <!-- Google Maps JS-->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&v=3&callback=initMap">
+    </script>
+
+    <!-- Custom JS-->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
